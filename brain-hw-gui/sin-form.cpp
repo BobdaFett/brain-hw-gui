@@ -1,15 +1,18 @@
 #include "sin_form.h"
 #include <cmath>
 #include <sstream>
-using namespace std;
+
+// Do not use the entire std namespace - it breaks the managed code. Instead, mention each part individually.
+using std::stringstream;
 
 // need to create some sort of function here but i totally forgot the name.
+
 using namespace System;
 using namespace System::Windows::Forms;
 using namespace brainhwgui;
 
-[STAThread]
-int main(array<System::String^>^ args) {
+[STAThreadAttribute]
+int main(array<System::String ^> ^args) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 	Application::Run(gcnew sinform());

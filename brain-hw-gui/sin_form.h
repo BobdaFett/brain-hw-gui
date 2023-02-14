@@ -251,41 +251,6 @@ private: System::Void textBox2_TextChanged(System::Object^ sender, System::Event
 private: System::Void groupBox2_Enter(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	// Needs to get info from textboxes a and b
-	// Maybe just needs to pass some information?
-
-	// open a window with value of sin(x)
-	double a, b, n, deltax;
-	// String^ temp = text_a->Text;  // This is a String^, not a String, whatever that means.
-	try {
-		if (Double::TryParse(text_a->Text, a) && Double::TryParse(text_b->Text, b)) {
-			n = (b - a) / deltax;
-		}
-		else {
-			throw "Numbers did not parse.";
-		}
-	}
-	catch (string err) {
-		// User will have to reinsert their desired values.
-		printf("Error: {}", err);
-	}
-
-	switch (this->func_sel->SelectedIndex) {
-	case 1:
-		get_sinx(a, b, n, deltax);
-		break;
-	case 2:
-		// open a window with value of sin(x^2)
-		get_sinx2(a, b, n, deltax);
-		break;
-	case 3:
-		// open a window with value of x^2
-		get_x2(a, b, n, deltax);
-		break;
-	default:
-		// did not pass a valid function selection, do nothing yet.
-		break;
-	}
 }
 private: System::Void text_a_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
