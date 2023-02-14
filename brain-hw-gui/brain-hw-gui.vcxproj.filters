@@ -18,9 +18,15 @@
     <ClCompile Include="sin-form.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DoubleParseErrorForm.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sin_form.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DoubleParseErrorForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

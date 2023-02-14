@@ -45,7 +45,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CLRSupport>true</CLRSupport>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -119,9 +119,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DoubleParseErrorForm.cpp" />
     <ClCompile Include="sin-form.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DoubleParseErrorForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="sin_form.h">
       <FileType>CppForm</FileType>
     </ClInclude>

@@ -10,7 +10,7 @@ namespace brainhwgui {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for sinform
+	/// A program to compute the Taylor Series Expansion of various different equations.
 	/// </summary>
 	public ref class sinform : public System::Windows::Forms::Form
 	{
@@ -76,9 +76,9 @@ namespace brainhwgui {
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->func_sel = (gcnew System::Windows::Forms::ListBox());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->groupBox2->SuspendLayout();
 			this->groupBox1->SuspendLayout();
@@ -168,6 +168,7 @@ namespace brainhwgui {
 			this->func_sel->Location = System::Drawing::Point(15, 19);
 			this->func_sel->Name = L"func_sel";
 			this->func_sel->Size = System::Drawing::Size(157, 43);
+			this->func_sel->Sorted = true;
 			this->func_sel->TabIndex = 1;
 			// 
 			// groupBox1
@@ -190,6 +191,23 @@ namespace brainhwgui {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Entry";
 			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(96, 160);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(122, 20);
+			this->textBox1->TabIndex = 12;
+			this->textBox1->Text = L"Enter value...";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(45, 163);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(45, 13);
+			this->label5->TabIndex = 11;
+			this->label5->Text = L"Delta X:";
+			// 
 			// button1
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
@@ -201,23 +219,6 @@ namespace brainhwgui {
 			this->button1->Text = L"Calculate!";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &sinform::button1_Click);
-			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(45, 163);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(45, 13);
-			this->label5->TabIndex = 11;
-			this->label5->Text = L"Delta X:";
-			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(96, 160);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(122, 20);
-			this->textBox1->TabIndex = 12;
-			this->textBox1->Text = L"Enter value...";
 			// 
 			// sinform
 			// 
@@ -238,32 +239,57 @@ namespace brainhwgui {
 #pragma endregion
 
 	private:
-		enum ErrorType {
-			OutOfBounds,
-			DoubleParseError
-		};
+		System::Void eq_choice_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		}
+		System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+		}
+		System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+		}
+		System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
+		}
+		System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
+		}
+		System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		}
+		System::Void groupBox2_Enter(System::Object^ sender, System::EventArgs^ e) {
+		}
+		System::Void text_a_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		}
+		System::Void sinform_Load(System::Object^ sender, System::EventArgs^ e) {
+		}
 		System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
 			// This is where the work will be done
-
+			// My github repo here has completely broken itself.
 			// not totally sure how to change from String ^ to string or double.
 			try {
 				auto temp = text_a->Text;  // Becomes System::String ^
-				double newDouble = 0;
-				if (Double::TryParse(temp, newDouble)) {
-
+				double a = 0, b = 0, deltax = 0, n = 0;
+				if (Double::TryParse(temp, a) && Double::TryParse(text_b->Text, b)) {
+					int selectedFunction = func_sel->SelectedIndex;
+					switch (selectedFunction) {
+					case 1:
+						// Use sin(x)
+						break;
+					case 2:
+						// Use sin(x^2)
+						break;
+					case 3:
+						// Use x^2
+						break;
+					default:
+						// Something isn't selected or there is an invalid index.
+						break;
+					}
 				}
 				else {
-					throw DoubleParseError;
+					throw 1;
 				}
 			}
-			catch (ErrorType error) {
-				switch (error) {
-				case DoubleParseError:
+			catch (int errorID) {
+				switch (errorID) {
+				case 1:  // DoubleParseError
 					// Throw an error relating to file creation.
-					break;
-				case OutOfBounds:
-					// I don't know why this would even need to throw from here, but it's a good testing point.
 					break;
 				default:
 					// An invalid error code was thrown. Check your code.
