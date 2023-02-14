@@ -56,7 +56,7 @@ namespace brainhwgui {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -236,25 +236,40 @@ namespace brainhwgui {
 
 		}
 #pragma endregion
-private: System::Void eq_choice_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void groupBox2_Enter(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void text_a_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void sinform_Load(System::Object^ sender, System::EventArgs^ e) {
-}
-};
+
+	private:
+		enum ErrorType {
+			OutOfBounds,
+			DoubleParseError
+		};
+		System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+			// This is where the work will be done
+
+			// not totally sure how to change from String ^ to string or double.
+			try {
+				auto temp = text_a->Text;  // Becomes System::String ^
+				double newDouble = 0;
+				if (Double::TryParse(temp, newDouble)) {
+
+				}
+				else {
+					throw DoubleParseError;
+				}
+			}
+			catch (ErrorType error) {
+				switch (error) {
+				case DoubleParseError:
+					// Throw an error relating to file creation.
+					break;
+				case OutOfBounds:
+					// I don't know why this would even need to throw from here, but it's a good testing point.
+					break;
+				default:
+					// An invalid error code was thrown. Check your code.
+					break;
+				}
+			}
+		}
+	};
 }
